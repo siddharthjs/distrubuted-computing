@@ -14,7 +14,7 @@ The client process can be either single-threaded or multi-threaded. A single-thr
 
 ### Server
 
-\```plaintext
+```plaintext
 Initialize shared memory structures
 While server is running:
     Check if clientflag is set (indicating a new number to factorize)
@@ -22,11 +22,11 @@ While server is running:
         Get the number from shared memory
         Launch multiple threads (32 as per other requirements) to factorize the number
         Each thread factorizes the number rotated by a different number of bits
-\```
+```
 
 ### Client
 
-\```plaintext
+```plaintext
 While client is running:
     Get user input (number to factorize or 'q' to quit)
     If input is a number:
@@ -34,13 +34,13 @@ While client is running:
     Else if input is 'q':
         Terminate client
     Check serverflag for responses and display them
-\```
+```
 
 ## C Implementation
 
 **Shared Structures**:
 
-\```c
+```c
 typedef struct {
     unsigned long number;
     unsigned long slot[10];
@@ -48,11 +48,11 @@ typedef struct {
     char serverflag[10];
     char progress[10];
 } SharedMemory;
-\```
+```
 
 ### Server
 
-\```c
+```c
 #include <pthread.h>
 #include <stdio.h>
 // ... other required includes ...
@@ -81,11 +81,11 @@ int main() {
     // Cleanup
     return 0;
 }
-\```
+```
 
 ### Client
 
-\```c
+```c
 #include <stdio.h>
 // ... other required includes ...
 
@@ -117,6 +117,6 @@ int main() {
     // Cleanup
     return 0;
 }
-\```
+```
 
 > Note: The provided C implementation is a skeleton code to give you a broad idea. It doesn't include the necessary error handling, shared memory initializations, factorization logic, etc. You will need to flesh it out and fill in the missing parts to create a fully functional solution.
